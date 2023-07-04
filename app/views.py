@@ -72,9 +72,8 @@ def delete_post(request, pk):
     messages.success(request, (title + ' has been deleted.'))
     return redirect('home')
 
-# ########################################################
-# Session
-# ########################################################
+# . . . Session . . .
+
 @login_required
 @lecturer_required
 def session_list_view(request):
@@ -157,12 +156,11 @@ def session_delete_view(request, pk):
         session.delete()
         messages.success(request, "Session successfully deleted")
     return redirect('session_list')
-# ########################################################
 
 
-# ########################################################
-# Semester
-# ########################################################
+# 
+# . . . Semester . . .
+
 @login_required
 @lecturer_required
 def semester_list_view(request):

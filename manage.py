@@ -21,3 +21,5 @@ if __name__ == '__main__':
     # OS environment variables take precedence over variables from .env
     environ.Env.read_env()
     main()
+
+

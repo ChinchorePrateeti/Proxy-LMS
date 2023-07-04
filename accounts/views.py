@@ -12,7 +12,6 @@ from django.contrib.auth.forms import UserCreationForm, UserChangeForm, Password
 
 from .decorators import lecturer_required, student_required, admin_required
 from course.models import Course
-from result.models import TakenCourse
 from app.models import Session, Semester
 from .forms import StaffAddForm, StudentAddForm, ProfileUpdateForm, ParentAddForm
 from .models import User, Student, Parent
@@ -42,9 +41,11 @@ def register(request):
 @login_required
 def profile(request):
     """ Show profile of any user that fire out the request """
+
     try:
         current_session = get_object_or_404(Session, is_current_session=True)
         current_semester = get_object_or_404(Semester, is_current_semester=True, session=current_session)
+
         
     except Semester.MultipleObjectsReturned and Semester.DoesNotExist and Session.DoesNotExist:
         raise Http404
@@ -88,6 +89,7 @@ def profile(request):
 @admin_required
 def profile_single(request, id):
     """ Show profile of any selected user """
+    
     if request.user.id == id:
         return redirect("/profile/")
 
@@ -133,12 +135,11 @@ def profile_single(request, id):
 @admin_required
 def admin_panel(request):
     return render(request, 'setting/admin_panel.html', {})
-# ########################################################
 
 
-# ########################################################
-# Setting views
-# ########################################################
+
+# . . .Setting views . . .
+
 @login_required
 def profile_update(request):
     if request.method == 'POST':
@@ -173,7 +174,6 @@ def change_password(request):
     return render(request, 'setting/password_change.html', {
         'form': form,
     })
-# ########################################################
 
 @login_required
 @admin_required
@@ -231,12 +231,7 @@ class LecturerListView(ListView):
         return context
 
 
-# @login_required
-# @lecturer_required
-# def delete_staff(request, pk):
-#     staff = get_object_or_404(User, pk=pk)
-#     staff.delete()
-#     return redirect('lecturer_list')
+
 
 @login_required
 @admin_required
@@ -246,12 +241,12 @@ def delete_staff(request, pk):
     lecturer.delete()
     messages.success(request, 'Lecturer ' + full_name + ' has been deleted.')
     return redirect('lecturer_list')
-# ########################################################
 
 
-# ########################################################
-# Student views
-# ########################################################
+
+
+# . . .Student views. . . 
+
 @login_required
 @admin_required
 def student_add_view(request):
@@ -332,11 +327,3 @@ class ParentAdd(CreateView):
     template_name = 'accounts/parent_form.html'
 
 
-# def parent_add(request):
-#     if request.method == 'POST':
-#         form = ParentAddForm(request.POST)
-#         if form.is_valid():
-#             form.save()
-#             return redirect('student_list')
-#     else:
-#         form = ParentAddForm(request.POST)

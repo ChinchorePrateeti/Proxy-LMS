@@ -53,6 +53,7 @@ class ProgramManager(models.Manager):
 class Program(models.Model):
     title = models.CharField(max_length=150, unique=True)
     summary = models.TextField(null=True, blank=True)
+    
 
     objects = ProgramManager()
 
@@ -96,7 +97,7 @@ class Course(models.Model):
     def get_absolute_url(self):
         return reverse('course_detail', kwargs={'slug': self.slug})
     
-    @property
+    #doubt- why is_current_semester function unable to return its value to program_single line 81 (pending)
     def is_current_semester(self):
         from app.models import Semester
         current_semester = Semester.objects.get(is_current_semester=True)

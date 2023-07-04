@@ -124,11 +124,11 @@ class StudentAddForm(UserCreationForm):
         ),
     )
 
-    department = forms.ModelChoiceField(
-        queryset=Program.objects.all(),
-        widget=forms.Select(attrs={'class': 'browser-default custom-select form-control'}),
-        label="Department",
-    )
+    # department = forms.ModelChoiceField(
+    #     queryset=Program.objects.all(),
+    #     widget=forms.Select(attrs={'class': 'browser-default custom-select form-control'}),
+    #     label="Department",
+    # )
 
     email = forms.EmailField(
         widget=forms.TextInput(

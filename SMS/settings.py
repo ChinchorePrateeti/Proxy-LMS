@@ -29,7 +29,7 @@ SECRET_KEY = 'o!ld8nrt4vc*h1zoey*wj48x*q0#ss12h=+zh)kk^6b3aygg=!'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # change the default user models to our custom model
 AUTH_USER_MODEL = 'accounts.User' 
@@ -58,10 +58,10 @@ PROJECT_APPS = [
     'app.apps.AppConfig',
     'accounts.apps.AccountsConfig',
     'course.apps.CourseConfig',
-    'result.apps.ResultConfig',
+    # 'result.apps.ResultConfig',
     'search.apps.SearchConfig',
-    'quiz.apps.QuizConfig',
-    'payments.apps.PaymentsConfig',
+    # 'quiz.apps.QuizConfig',
+    # 'payments.apps.PaymentsConfig',
 ]
 
 # Combine all apps
@@ -190,8 +190,8 @@ EMAIL_HOST_PASSWORD = env('USER_PASSWORD')
 # crispy config
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/'  #not doneeeeeeeeeeeeeeeeee
+LOGOUT_REDIRECT_URL = '/' #not doneeeeeeeeeeeeeeeeee
 
 # DRF setup
 REST_FRAMEWORK = {

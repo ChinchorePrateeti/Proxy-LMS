@@ -34,8 +34,8 @@ urlpatterns = [
     path('course/<slug>/video_tutorials/<video_slug>/delete/', handle_video_delete, name='upload_video_delete'),
 
     # course registration
-    path('course/registration/', course_registration, name='course_registration'),
-    path('course/drop/', course_drop, name='course_drop'),
+#     path('course/registration/', course_registration, name='course_registration'),
+#     path('course/drop/', course_drop, name='course_drop'),
     
-    path('my_courses/', user_course_list, name="user_course_list"),
-]
+#     path('my_courses/', user_course_list, name="user_course_list"),
+ ]

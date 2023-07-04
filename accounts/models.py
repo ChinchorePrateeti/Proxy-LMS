@@ -6,18 +6,18 @@ from django.conf import settings
 from django.db.models import Q
 from PIL import Image
 
-from course.models import Program
-from .validators import ASCIIUsernameValidator
+from course.models import Program #NOT DONEEEEEEEEEEEE
+from .validators import ASCIIUsernameValidator #NOT DONEEEEEEEEEEEEEEEEEEE
 
 
 # LEVEL_COURSE = "Level course"
-BACHLOAR_DEGREE = "Bachloar"
-MASTER_DEGREE = "Master"
+BACHELOR_DEGREE = "Bachelor"
+MASTERS_DEGREE = "Masters"
 
 LEVEL = (
     # (LEVEL_COURSE, "Level course"),
-    (BACHLOAR_DEGREE, "Bachloar Degree"),
-    (MASTER_DEGREE, "Master Degree"),
+    (BACHELOR_DEGREE, "Bachelor Degree"),
+    (MASTERS_DEGREE, "Masters Degree"),
 )
 
 FATHER = "Father"
@@ -63,7 +63,7 @@ class User(AbstractUser):
 
     username_validator = ASCIIUsernameValidator()
 
-    objects = UserManager()
+    objects = UserManager() #what is this? and why do so?
 
     @property
     def get_full_name(self):
@@ -130,7 +130,7 @@ class Student(models.Model):
     level = models.CharField(max_length=25, choices=LEVEL, null=True)
     department = models.ForeignKey(Program, on_delete=models.CASCADE, null=True)
 
-    objects = StudentManager()
+    objects = StudentManager() #same. What is this and why do so?
 
     def __str__(self):
         return self.student.get_full_name
@@ -144,10 +144,7 @@ class Student(models.Model):
 
 
 class Parent(models.Model):
-    """
-    Connect student with their parent, parents can 
-    only view their connected students information
-    """
+    
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     student = models.OneToOneField(Student, null=True, on_delete=models.SET_NULL)
     first_name = models.CharField(max_length=120)

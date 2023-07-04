@@ -4,8 +4,11 @@ from django.contrib.auth.views import (
     PasswordResetCompleteView, LoginView, LogoutView
     )
 from .views import (
-        profile, profile_single, admin_panel, 
-        profile_update, change_password, 
+        profile, 
+        # profile_single, 
+        admin_panel, 
+        profile_update, 
+        change_password, 
         LecturerListView, StudentListView, 
         staff_add_view, edit_staff, 
         delete_staff, student_add_view, 
@@ -20,7 +23,7 @@ urlpatterns = [
     path('admin_panel/', admin_panel, name='admin_panel'),
 
     path('profile/', profile, name='profile'),
-    path('profile/<int:id>/detail/', profile_single, name='profile_single'),
+    # path('profile/<int:id>/detail/', profile_single, name='profile_single'),
     path('setting/', profile_update, name='edit_profile'),
     path('change_password/', change_password, name='change_password'),
 

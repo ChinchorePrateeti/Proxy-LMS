@@ -10,7 +10,6 @@ from django.views.generic import ListView
 
 from accounts.models import User, Student
 from app.models import Session, Semester
-from result.models import TakenCourse
 from accounts.decorators import lecturer_required, student_required
 from .forms import (
     ProgramForm, CourseAddForm, CourseAllocationForm, 
